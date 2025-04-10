@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Blueroler - Media</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+      opacity: 1;
+      transition: opacity 1s ease;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #003366;
+    }
+
+    p {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #036;
+    }
+
+    .spinner {
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>The resource you are looking for does not exist.</h1>
+  <p>You will be redirected to the home page in <span id="countdown">5</span> Seconds</p>
+  <img src="loading.gif" alt="Loading..." class="spinner">
+
+  <script>
+    let seconds = 5;
+    const countdownEl = document.getElementById("countdown");
+
+    countdownEl.textContent = seconds;
+
+    const interval = setInterval(() => {
+      seconds--;
+      countdownEl.textContent = seconds;
+
+      if (seconds <= 0) {
+        clearInterval(interval);
+        document.body.style.opacity = 0;
+        setTimeout(() => {
+          window.location.href = "https://blueroler.com";
+        }, 1000);
+      }
+    }, 1000);
+  </script>
+</body>
+
+</html>
